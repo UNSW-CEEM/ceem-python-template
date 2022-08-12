@@ -44,7 +44,7 @@ Poetry is used for dependency management, dependency resolution and can also be 
     - As of August 2022, 1.2.0 is still pre-release, so make sure you are on the `master` version of the poetry documentation
     - Edit the project info in [`pyproject.toml`](pyproject.toml), or delete it and use `poetry init` to start from scratch (if you are proceeding to the next few sections, it is best not to delete the existig `pyproject.toml`)
     - You can add dependencies in the [`pyproject.toml`](pyproject.toml) or use the command line:
-      - You can add a core dependency via `poetry add pandas` 
+      - You can add a core dependency via `poetry add`, e.g. `poetry add pandas` 
       - You can add dependencies to a group (adding to a group is optional) using `poetry add pytest --group test`
       - You can install the dependencies from `poetry.lock`, including optional groups, using `poetry install --with=test`
       - You can update dependencies and create a `poetry.lock` file using `poetry update`
@@ -80,7 +80,47 @@ Note that some testing config is specified in the [`pyproject.toml`](pyproject.t
 
 If you've made it this far, well done. Prepare for the most tricky bit: documentation
 
+This section is a WIP. We will add to it as we come across good resources.
+
 #### Documentation
+
+Documentation is located in the docs folder.
+
+This project uses:
+
+1. [Sphinx](https://www.sphinx-doc.org/en/master/index.html) to generate documentation. Sphinx is based on reStructuredText.
+    - We use several Sphinx extensions that make using Sphinx easier
+      - [`autodoc`](https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html) which will help you automatically generate the documentation from the docstrings in your code
+      - [`napoleon`](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html) which lets you write docstrings in your code using NumPy or Google style docstrings (as opposed to reStructuredText)
+    - Sphinx is configured in [`conf.py`](docs/source/conf.py)
+2. [MyST](https://myst-parser.readthedocs.io/en/latest/intro.html), a parser which optionally lets you write your documentation using Markdown. If you know Markdown, this can reduce, but not eliminate, the need for reStructuredText.
+3. [readthedocs](https://readthedocs.org/) to host our documentation online. You'll need to link RtD to your repo (see [here](https://docs.readthedocs.io/en/stable/tutorial/)). Settings can be configured in the [YAML](.readthedocs.yaml)
+
+##### Building locally
+
+You can test whether your documentation builds locally by using the commands offered by the [Makefile](./docs/Makefile). To do this, change directory to `docs` and run `make` to see build options. The easiest option is `make html`.
+
+##### Sphinx tutorials
+
+There is a fair bit to learn to be able to write docs. Even if you use MyST, you will need to learn about [roles and directives](https://sphinx-intro-tutorial.readthedocs.io/en/latest/sphinx_roles.html).
+
+Here are some tutorials:
+- [A tutorial prepared for PyCon 2021](https://sphinx-intro-tutorial.readthedocs.io/en/latest/index.html)
+- [The official Sphinx tutorial](https://www.sphinx-doc.org/en/master/tutorial/index.html)
+
+##### Examples
+
+The source folder in this template repo contains basics for making docs. There is also an example of the markdown file used to generate the [API section of the docs](docs/source/nemseer_example.md).
+
+ You can also refer to:
+  - [nempy's docs](https://nempy.readthedocs.io/en/latest/)
+  - [nemseer's docs](https://nemseer.readthedocs.io/en/latest/)
+
+#### Tool Config
+
+- `flake8` is configured by [.flake8](.flake8)
+- `pytest`, `isort` and `mypy` (not included) can be configured in the [pyproject.toml](pyproject.toml)
+- See relevant sections above for config for `pre-commit`, `read-the-docs` and Sphinx
 
 ## Contributing
 
