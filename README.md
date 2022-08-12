@@ -19,17 +19,39 @@ Badges can go here
 ### References
 
 Nothing helps as much as examples.
-- [This](https://github.com/UNSW-CEEM/NEMSEER) is a great guide that provides a brief overview of all the tools we use in this template.
-- All of the tooling has been implemented in [NEMSEER](https://github.com/UNSW-CEEM/NEMSEER)
+- [This](https://www.marwandebbiche.com/posts/python-package-tooling/) is a great guide that provides a brief overview of all the tools we use in this template.
+- All of the tooling has been implemented in [`nemseer`](https://github.com/UNSW-CEEM/NEMSEER)
 
 
 ## Usage
 
 ### Basic
 
-1. [Choose a license](https://choosealicense.com/), and add the `LICENSE` file to the repo
-2. Update your [code of conduct](CONDUCT.md), and the [*Get Started!* section](CONTRIBUTING.md#get-started) of the [contributing guidelines](CONTRIBUTING.md)  
+#### Updating repo info
 
+1. [Choose a license](https://choosealicense.com/), and add the `LICENSE` file to the repo
+2. Update your [code of conduct](CONDUCT.md)
+3. Update the [*Get Started!* section](CONTRIBUTING.md#get-started) of the [contributing guidelines](CONTRIBUTING.md)
+    - Note that this currently has steps you would use to install poetry v1.2.0b2 and various dependency groups that are being used by [`nemseer`](https://github.com/UNSW-CEEM/NEMSEER)
+4. (Optional) [Make your software citeable](https://citation-file-format.github.io/)
+
+#### Poetry
+
+1. Install [`poetry`](https://python-poetry.org/docs/master/)
+    - Note that this repo is using poetry v1.2.0b2, so install this version (see the [contributing guidelines](CONTRIBUTING.md#get-started)) 
+    - As of August 2022, 1.2.0 is still pre-release, so make sure you are on the `master` version of the poetry documentation
+    - Edit the project info in [`pyproject.toml`](pyproject.toml), or delete it and use `poetry init` to start from scratch
+    - You can add dependencies in the [`pyproject.toml`](pyproject.toml) or use the command line:
+      - You can add a core dependency via `poetry add pandas` 
+      - You can add dependencies to a group (adding to a group is optional) using `poetry add pytest --group test`
+      - You can install the dependencies from `poetry.lock`, including optional groups, using `poetry install --with=test`
+      - You can update dependencies and create a `poetry.lock` file using `poetry update`
+      - **Commit `pyproject.toml` and `poetry.lock` to version control**
+
+### Intermediate
+      
+
+### Advanced
 
 ## Contributing
 

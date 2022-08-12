@@ -2,7 +2,6 @@
 
 <!--next-version-placeholder-->
 
-## v0.1.0 (28/07/2022)
+## v0.1.0 (12/08/2022)
 
-- First release of `nemseer`!
-    -
+- My first release
