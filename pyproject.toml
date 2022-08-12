@@ -1,0 +1,93 @@
+[tool.poetry]
+name = "nemseer"
+version = "0.1.0"
+description = "A package for downloading and handling forecasts for the National Electricity Market (NEM) from the Australian Energy Market Operator (AEMO)."
+authors = ["Abhijith Prakash"]
+license = "BSD 3-Clause"
+readme = "README.md"
+
+# Main dependencies for the package via poetry. Package users will need these dependencies.
+[tool.poetry.dependencies]
+python = ">= 3.8, < 3.11"
+attrs = "^21"
+beautifulsoup4 = "^4"
+dask = "^2022.7.1"
+netCDF4 = "^1.6.0"
+numpy = "^1.23.0"
+packaging = "^21.3"
+pandas = "^1.2"
+pyarrow = "^8.0.0"
+requests = "^2"
+tqdm = "^4.64.0"
+xarray = "^2022"
+
+# Packages for developers for creating documentation
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+# MyST parser for Sphinx documentation with furo theme
+Sphinx = "^5.0.2"
+furo = "^2022.6.21"
+myst-parser = "^0.18.0"
+
+# Packages for developers for debugging
+[tool.poetry.group.debug]
+optional = true
+
+[tool.poetry.group.debug.dependencies]
+ipdb = "*"
+ipython = "*"
+jupyter = "^1.0.0"
+notebook = "^6.4.12"
+
+# Packages for developers for linting/autoformatting
+[tool.poetry.group.style]
+optional = true
+
+[tool.poetry.group.style.dependencies]
+# static: flake8 (style), mypy (typing), with type stubs for some libraries
+# autoformatter: black (style), isort (import sort)
+# pre-commit: tool to configure and install pre-commit hooks
+flake8 = "*"
+mypy = "*"
+types-requests = "^2.28.4"
+types-beautifulsoup4 = "^4.11.4"
+types-python-dateutil = "^2.8.19"
+pandas-stubs = "^1.4.3.220724"
+black = "^22.6.0"
+isort = "^5.10.1"
+pre-commit = "^2.20.0"
+
+# Packages for developers for testing
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+# pytest and pytest-cov for coverage
+pytest = "^7"
+pytest-cov = "^3"
+
+# Config for pytest and pytest-cov
+[tool.pytest.ini_options]
+# path to tests for pytest
+testpaths = ["tests"]
+# addopts = add options
+# -ra means show extra test summary info for all except passed tests
+# --cov points pytest-cov to the src/ dir
+# --cov-branch runs branch coverage. See https://breadcrumbscollector.tech/how-to-use-code-coverage-in-python-with-pytest/
+# --cov-repot html dumps HTML and xml summaries of pytest-cov in the "tests" folder
+addopts = "-ra --cov=src/ --cov-branch --cov-report xml:tests/coverage.xml --cov-report html:tests/htmlcov"
+
+# Config isort to be compatible with black
+[tool.isort]
+profile = "black"
+
+# Config for mypy
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+
+[build-system]
+requires = ["poetry-core>=1.1.0b2"]
+build-backend = "poetry.core.masonry.api"
