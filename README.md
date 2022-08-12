@@ -110,7 +110,7 @@ Here are some tutorials:
 
 ##### Examples
 
-The source folder in this template repo contains basics for making docs. There is also an example of the markdown file used to generate the [API section of the docs](docs/source/nemseer_example.md).
+The source folder in this template repo contains basics for making docs. There is also an example of the markdown file used to generate the [API section of the `nemseer` docs](docs/source/nemseer_example.md).
 
  You can also refer to:
   - [nempy's docs](https://nempy.readthedocs.io/en/latest/)
