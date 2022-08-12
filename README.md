@@ -37,6 +37,8 @@ Nothing helps as much as examples.
 
 #### Poetry
 
+Poetry is used for dependency management, dependency resolution and can also be used as a build tool.
+
 1. Install [`poetry`](https://python-poetry.org/docs/master/)
     - Note that this repo is using poetry v1.2.0b2, so install this version (see the [contributing guidelines](CONTRIBUTING.md#get-started)) 
     - As of August 2022, 1.2.0 is still pre-release, so make sure you are on the `master` version of the poetry documentation
@@ -49,9 +51,36 @@ Nothing helps as much as examples.
       - **Commit `pyproject.toml` and `poetry.lock` to version control**
 
 ### Intermediate
-      
+
+#### Linters, Auto-formatting and `pre-commit`
+
+Because code shouldn't look awful. We will be using `isort` (import sorting), `flake8` (python linter) and `black` (an autoformatter) via [`pre-commit`](https://pre-commit.com/).
+
+`pre-commit` streamlines creating [pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), which are run prior to a commit being accepted by git (locally). This way, your code won't be committed if there are style issues (some of which will be automatically addressed by `black` or `isort`, after which you must stage any further changes).
+
+1. Install the style packages using `poetry install with=style`
+2. Configure any additional pre-commit hooks in the [YAML](.pre-commit-config.yaml)
+3. To run manually, you can run `pre-commit run -a`. Alternatively, these hooks will run as you try and commit changes
+4, (Optional) Install `black` extensions that auto-format on save in your favourite IDE
+
+#### Automated testing and publishing to PyPI
+
+Both of these can be achieved via [GitHub Actions](https://github.com/features/actions).
+
+Note that some testing config is specified in the [`pyproject.toml`](pyproject.toml).
+
+1. The workflow is located [here](.github/workflows/cicd.yml). It is commented to give you an understanding of what it does
+    1. Automatically runs linting and autoformatting as above
+    2. If that passes, then runs your code tests across Mac and Ubuntu for a couple of Python versions
+    3. If a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) is created based on a Git tag, it will build the package and upload to PyPI
+        - To get this to work, you will need to add your PyPI username and password as [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+2. Uncomment the lines specified. This should allow the workflow to run on a push, pull-request or when manually triggered. Note that publishing to PyPI is only triggered on a release
 
 ### Advanced
+
+If you've made it this far, well done. Prepare for the most tricky bit: documentation
+
+#### Documentation
 
 ## Contributing
 
