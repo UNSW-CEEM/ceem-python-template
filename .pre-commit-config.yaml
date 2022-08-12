@@ -35,15 +35,3 @@ repos:
     rev: 3.9.2
     hooks:
     -   id: flake8
-
-# Runs mypy
-# Uses local environment as opposed to mypy-mirror to enable access to dependencies
--   repo: local
-    hooks:
-    -   id: mypy
-        name: mypy
-        language: system
-        entry: poetry run mypy
-        # excludes checking files in docs
-        exclude: ^(docs/)
-        types: [python]
