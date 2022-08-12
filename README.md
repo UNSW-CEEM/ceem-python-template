@@ -28,7 +28,7 @@ Nothing helps as much as examples.
 ### Basic
 
 1. [Choose a license](https://choosealicense.com/), and add the `LICENSE` file to the repo
-2. Update your [code of conduct](CONDUCT.md), and the [*Get Started!* section](https://github.com/UNSW-CEEM/ceem-python-template/CONTRIBUTING.md#get-started) of the [contributing guidelines](CONTRIBUTING.md)  
+2. Update your [code of conduct](CONDUCT.md), and the [*Get Started!* section](CONTRIBUTING.md#get-started) of the [contributing guidelines](CONTRIBUTING.md)  
 
 
 ## Contributing
