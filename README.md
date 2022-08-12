@@ -1,37 +1,46 @@
-# nemseer
-[![PyPI version](https://badge.fury.io/py/nemseer.svg)](https://badge.fury.io/py/nemseer)
-[![Documentation Status](https://readthedocs.org/projects/nemseer/badge/?version=latest)](https://nemseer.readthedocs.io/en/latest/?badge=latest)
-[![codecov](https://codecov.io/gh/UNSW-CEEM/NEMSEER/branch/master/graph/badge.svg?token=BO69YSQIGI)](https://codecov.io/gh/UNSW-CEEM/NEMSEER)
+# UNSW CEEM Python Package Template
+
+Replace the heading above with `your_package`.
+
+---
+
+Badges can go here
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-A package for downloading and handling forecasts for the National Electricity Market (NEM) from the Australian Energy Market Operator (AEMO).
+---
 
-## Work in Progress
+## How do I use this template?
 
-This package is a work in progress. For a high-level overview of development, check out the [roadmap](ROADMAP.md).
+1. Hit "*Use this template*" in the top right of this page
+2. Work through as much of the [basic](https://github.com/UNSW-CEEM/ceem-python-template#basic), [intermediate](https://github.com/UNSW-CEEM/ceem-python-template#intermediate) and [advanced](https://github.com/UNSW-CEEM/ceem-python-template#advanced) steps as you like.
+3. Edit this README and make sure you update `your_package`, `your_name` and `licence_type`.
 
-## Installation
+### References
 
-```bash
-pip install nemseer
-```
+Nothing helps as much as examples.
+- [This](https://github.com/UNSW-CEEM/NEMSEER) is a great guide that provides a brief overview of all the tools we use in this template.
+- All of the tooling has been implemented in [NEMSEER](https://github.com/UNSW-CEEM/NEMSEER)
+
 
 ## Usage
 
-- TODO
+### Basic
+
+1. [Choose a license](https://choosealicense.com/), and add the `LICENSE` file to the repo
+2. Update your [code of conduct](CONDUCT.md), and the [*Get Started!* section](https://github.com/UNSW-CEEM/ceem-python-template/CONTRIBUTING.md#get-started) of the [contributing guidelines](CONTRIBUTING.md)  
+
 
 ## Contributing
 
-Interested in contributing? Check out the [contributing guidelines](CONTRIBUTING.md), which also includes steps to install `nemseer` for development.
+Interested in contributing? Check out the [contributing guidelines](CONTRIBUTING.md), which also includes steps to install `your_package` for development.
 
 Please note that this project is released with a [Code of Conduct](CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-`nemseer` was created by Abhijith Prakash. It is licensed under the terms of the [BSD 3-Clause license](LICENSE).
+`your_package` was created by `your_name`. It is licensed under the terms of the `licence_type`.
 
 ## Credits
 
-`nemseer` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
-
-`nemseer` borrows functionality from [`NEMOSIS`](https://github.com/UNSW-CEEM/NEMOSIS), a package for extracting historical *actual* market data from AEMO's NemWeb.
+This template was created using [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/), the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter) and using Marwan Debbiche's excellent [walkthrough](https://www.marwandebbiche.com/posts/python-package-tooling/)

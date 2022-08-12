@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "nemseer"
+name = "Your package name"
 version = "0.1.0"
-description = "A package for downloading and handling forecasts for the National Electricity Market (NEM) from the Australian Energy Market Operator (AEMO)."
+description = "Package description"
 authors = ["Abhijith Prakash"]
-license = "BSD 3-Clause"
+license = "Licence"
 readme = "README.md"
 
 # Main dependencies for the package via poetry. Package users will need these dependencies.
