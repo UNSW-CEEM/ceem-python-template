@@ -65,7 +65,7 @@ Because code shouldn't look awful. We will be using `isort` (import sorting), `f
 
 `pre-commit` streamlines creating [pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), which are run prior to a commit being accepted by git (locally). This way, your code won't be committed if there are style issues (some of which will be automatically addressed by `black` or `isort`, after which you must stage any further changes).
 
-1. Install the style packages using `poetry install with=style`
+1. Install the style packages using `poetry install --with=style`
 2. Configure any additional pre-commit hooks in the [YAML](.pre-commit-config.yaml)
 3. To run manually, you can run `pre-commit run -a`. Alternatively, these hooks will run as you try and commit changes
 4. (Optional) Install `black` extensions that auto-format on save in your favourite IDE
