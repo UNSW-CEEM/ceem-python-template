@@ -98,6 +98,7 @@ This project uses:
 
 ##### Building locally
 
+First, install the packages required for buildings docs using `poetry install --with=docs`
 You can test whether your documentation builds locally by using the commands offered by the [Makefile](./docs/Makefile). To do this, change directory to `docs` and run `make` to see build options. The easiest option is `make html`.
 
 ##### Sphinx tutorials
