@@ -50,6 +50,13 @@ Poetry is used for dependency management, dependency resolution and can also be 
       - You can update dependencies and create a `poetry.lock` file using `poetry update`
       - **Commit `pyproject.toml` and `poetry.lock` to version control**
 
+#### Testing
+
+1. To install testing dependencies, use `poetry install --with=test`
+2. Put your tests in `tests/`
+3. Run your tests by running `pytest` in the project directory
+4. Test coverage will be in `tests/htmlcov/index.html` 
+
 ### Intermediate
 
 #### Linters, Auto-formatting and `pre-commit`
