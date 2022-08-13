@@ -103,6 +103,10 @@ This project uses:
 2. [MyST](https://myst-parser.readthedocs.io/en/latest/intro.html), a parser which optionally lets you write your documentation using Markdown. If you know Markdown, this can reduce, but not eliminate, the need for reStructuredText.
 3. [readthedocs](https://readthedocs.org/) to host our documentation online. You'll need to link RtD to your repo (see [here](https://docs.readthedocs.io/en/stable/tutorial/)). Settings can be configured in the [YAML](.readthedocs.yaml)
 
+##### Gotcha: clearing your browser cache
+
+If you make changes to your docs, successfully build it locally (see below) or on RtD and then see that no change has been made, your browser may be caching the old version of the docs. Clear your browser cache and then try again.
+
 ##### Building locally
 
 First, install the packages required for buildings docs using `poetry install --with=docs`
