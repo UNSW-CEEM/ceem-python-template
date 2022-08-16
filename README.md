@@ -83,6 +83,7 @@ Note that some testing config is specified in the [`pyproject.toml`](pyproject.t
     3. If a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) is created based on a Git tag, it will build the package and upload to PyPI
         - To get this to work, you will need to add your PyPI username and password as [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 2. Uncomment the lines specified. This should allow the workflow to run on a push, pull-request or when manually triggered. Note that publishing to PyPI is only triggered on a release
+3. Activate the workflow. Do this by navigating to the Actions tab, selecting `...` and activating it.
 
 ### Advanced
 
