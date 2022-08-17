@@ -51,7 +51,7 @@ Ready to contribute? Here's how to set up `nemseer` for local development.
         $ curl -sSL https://install.python-poetry.org | python3 - --version 1.2.0b2
         ```
         
-    - The command below applies to Windows
+    - The command below applies to Windows. Run it in PowerShell (make sure you run PowerShell as an administrator).
       - You will also need to add the Poetry bin directory (printed during install) [to your PATH environment variable](https://stackoverflow.com/questions/44272416/how-to-add-a-folder-to-path-environment-variable-in-windows-10-with-screensho)
 
         ```powershell
