@@ -58,7 +58,7 @@ Ready to contribute? Here's how to set up `nemseer` for local development.
           (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py - --version=1.2.0b2
         ```
 
-4. Install `nemseer` using `poetry`:
+4. Install the package using `poetry`:
     - Developers should install additional `poetry` groups for development:
       - `docs` for documentation dependencies
       - `lint` for linters. `nemseer` uses `flake8` and `mypy` for type annotations
@@ -68,16 +68,31 @@ Ready to contribute? Here's how to set up `nemseer` for local development.
     ```console
     $ poetry install --with=docs,lint,test
     ```
+    - If you are on Windows and attempting to install dependencies results in an error such as the one below, refer to the fix below:
 
-3. Use `git` (or similar) to create a branch for local development and make your changes:
+    ```cmd
+    Command "C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38\python.exe" -W ignore - errored with the following return code 1, and output:
+    The system cannot find the path specified.
+    C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38
+    input was : import sys
+
+    if hasattr(sys, "real_prefix"):
+        print(sys.real_prefix)
+    elif hasattr(sys, "base_prefix"):
+        print(sys.base_prefix)
+    else:
+        print(sys.prefix)
+    ```
+
+5. Use `git` (or similar) to create a branch for local development and make your changes:
 
     ```console
     $ git checkout -b name-of-your-bugfix-or-feature
     ```
 
-4. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
+6. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
-5. Commit your changes and open a pull request.
+7. Commit your changes and open a pull request.
 
 ## Pull Request Guidelines
 
@@ -86,6 +101,34 @@ Before you submit a pull request, check that it meets these guidelines:
 1. The pull request should include additional tests if appropriate.
 2. If the pull request adds functionality, the docs should be updated.
 3. The pull request should work for all currently supported operating systems and versions of Python.
+
+## Fix for running `poetry` on Windows
+
+If you get an error message similar to the one above, or one that returns an `EnvCommandError` when you run `poetry install -vv` follow these steps.
+
+We will implement the fix described [here](https://github.com/python-poetry/poetry/issues/2746#issuecomment-739439858):
+
+1. Find where `poetry` source files are located. We are interested in `env.py`.
+
+    - They are likely to be here: `C:\Users\<USER>\AppData\Roaming\pypoetry\venv\Lib\site-packages\poetry\utils`
+    - If they are not, run `poetry install -vv` to get a stack trace and find where `env.py` is located (this should be in the stack trace)
+2. Find the `_run` method of class `Env`
+3. Comment out and add lines as demonstrated below (this is done in the last three line of the code block below)
+    
+  ```python
+  def _run(self, cmd: list[str], **kwargs: Any) -> int | str:
+  """
+  Run a command inside the Python environment.
+  """
+  call = kwargs.pop("call", False)
+  input_ = kwargs.pop("input_", None)
+  env = kwargs.pop("env", dict(os.environ))
+
+  try:
+      #if self._is_windows:
+      #    kwargs["shell"] = True
+      kwargs["shell"] = False
+  ```
 
 ## Code of Conduct
 
