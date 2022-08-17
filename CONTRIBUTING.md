@@ -129,6 +129,7 @@ We will implement the fix described [here](https://github.com/python-poetry/poet
         #    kwargs["shell"] = True
         kwargs["shell"] = False
     ```
+4. Try `poetry install` again. It should now work.
 
 ## Code of Conduct
 
