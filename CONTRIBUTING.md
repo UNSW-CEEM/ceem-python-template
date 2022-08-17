@@ -54,6 +54,7 @@ Ready to contribute? Here's how to set up `your_package` for local development.
     - The command below applies to Windows. Run it in PowerShell (make sure you run PowerShell as an administrator).
       - You will also need to add the Poetry bin directory (printed during install) [to your PATH environment variable](https://stackoverflow.com/questions/44272416/how-to-add-a-folder-to-path-environment-variable-in-windows-10-with-screensho)
       - For activating environments etc. you may need to alter your [PowerShell Execution Policy to `RemoteSigned`](https://windowsloop.com/change-powershell-execution-policy/)
+
         ```powershell
           (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py - --version=1.2.0b2
         ```
