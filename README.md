@@ -48,7 +48,8 @@ Poetry is used for dependency management, dependency resolution and can also be 
       - You can add dependencies to a group (adding to a group is optional) using `poetry add pytest --group test`
       - You can install the dependencies from `poetry.lock`, including optional groups, using `poetry install --with=test`
       - You can update dependencies and create a `poetry.lock` file using `poetry update`
-      - **Commit `pyproject.toml` and `poetry.lock` to version control**
+    - Run scripts with `poetry run`, or jsut spawn a shell in the poetry virtual environment using `poetry shell` and then run your code
+    - **Commit `pyproject.toml` and `poetry.lock` to version control**
 
 #### Testing
 
