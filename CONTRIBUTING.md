@@ -65,24 +65,24 @@ Ready to contribute? Here's how to set up `nemseer` for local development.
       - `test` for testing utilities
       - (optional) `debug` for debugging tools
 
-    ```console
-    $ poetry install --with=docs,lint,test
-    ```
+      ```console
+      $ poetry install --with=docs,lint,test
+      ```
     - If you are on Windows and attempting to install dependencies results in an error such as the one below, refer to the fix below:
 
-    ```cmd
-    Command "C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38\python.exe" -W ignore - errored with the following return code 1, and output:
-    The system cannot find the path specified.
-    C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38
-    input was : import sys
+      ```cmd
+      Command "C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38\python.exe" -W ignore - errored with the following return code 1, and output:
+      The system cannot find the path specified.
+      C:\Users\Abi Prakash\AppData\Local\Programs\Python\Python38
+      input was : import sys
 
-    if hasattr(sys, "real_prefix"):
-        print(sys.real_prefix)
-    elif hasattr(sys, "base_prefix"):
-        print(sys.base_prefix)
-    else:
-        print(sys.prefix)
-    ```
+      if hasattr(sys, "real_prefix"):
+          print(sys.real_prefix)
+      elif hasattr(sys, "base_prefix"):
+          print(sys.base_prefix)
+      else:
+          print(sys.prefix)
+      ```
 
 5. Use `git` (or similar) to create a branch for local development and make your changes:
 
@@ -115,20 +115,20 @@ We will implement the fix described [here](https://github.com/python-poetry/poet
 2. Find the `_run` method of class `Env`
 3. Comment out and add lines as demonstrated below (this is done in the last three line of the code block below)
     
-  ```python
-  def _run(self, cmd: list[str], **kwargs: Any) -> int | str:
-  """
-  Run a command inside the Python environment.
-  """
-  call = kwargs.pop("call", False)
-  input_ = kwargs.pop("input_", None)
-  env = kwargs.pop("env", dict(os.environ))
+    ```python
+    def _run(self, cmd: list[str], **kwargs: Any) -> int | str:
+    """
+    Run a command inside the Python environment.
+    """
+    call = kwargs.pop("call", False)
+    input_ = kwargs.pop("input_", None)
+    env = kwargs.pop("env", dict(os.environ))
 
-  try:
-      #if self._is_windows:
-      #    kwargs["shell"] = True
-      kwargs["shell"] = False
-  ```
+    try:
+        #if self._is_windows:
+        #    kwargs["shell"] = True
+        kwargs["shell"] = False
+    ```
 
 ## Code of Conduct
 
