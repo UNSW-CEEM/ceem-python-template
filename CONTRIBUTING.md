@@ -44,11 +44,10 @@ Ready to contribute? Here's how to set up `your_package` for local development.
 
 1. Download a copy of `your_package` locally.
 2. Install `poetry`
-    - `poetry` is changing the way dependencies are managed, so as of July 2022, install `v1.2.0b2` (we will transition to `v1.2.0` once it is released)
     - The command below applies to UNIX systems (Mac/Linux).
 
         ```console
-        $ curl -sSL https://install.python-poetry.org | python3 - --version 1.2.0b2
+        $ curl -sSL https://install.python-poetry.org | python3 -
         ```
         
     - The command below applies to Windows. Run it in PowerShell (make sure you run PowerShell as an administrator).
@@ -56,7 +55,7 @@ Ready to contribute? Here's how to set up `your_package` for local development.
       - For activating environments etc. you may need to alter your [PowerShell Execution Policy to `RemoteSigned`](https://windowsloop.com/change-powershell-execution-policy/)
 
         ```powershell
-          (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py - --version=1.2.0b2
+          (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
         ```
 
 4. Install the package using `poetry`:
