@@ -2,13 +2,6 @@
 
 Replace the heading above with `your_package`.
 
----
-
-Badges can go here
-
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
----
 
 ## How do I use this template?
 
@@ -20,8 +13,7 @@ Badges can go here
 
 Nothing helps as much as examples.
 - [This](https://www.marwandebbiche.com/posts/python-package-tooling/) is a great guide that provides a brief overview of all the tools we use in this template.
-- All of the tooling has been implemented in [`nemseer`](https://github.com/UNSW-CEEM/NEMSEER)
-
+- All of the tooling has been implemented in [`ispypsa`](https://github.com/Open-ISP/ISPyPSA)
 
 ## Usage
 
@@ -35,25 +27,31 @@ Nothing helps as much as examples.
     - Note that this currently has steps you would use to install various dependency groups that are being used by [`nemseer`](https://github.com/UNSW-CEEM/NEMSEER)
 4. (Optional) [Make your software citeable](https://citation-file-format.github.io/)
 
-#### Poetry
+#### UV
 
-Poetry is used for dependency management, dependency resolution and can also be used as a build tool.
+UV is used for dependency management, dependency resolution and can also be used as a 
+build tool.
 
-1. Install [`poetry`](https://python-poetry.org/docs/master/)
-    - Edit the project info in [`pyproject.toml`](pyproject.toml), or delete it and use `poetry init` to start from scratch (if you are proceeding to the next few sections, it is best not to delete the existig `pyproject.toml`)
+1. Install [`uv`](https://github.com/astral-sh/uv)
+    - Edit the project info in [`pyproject.toml`](pyproject.toml), or delete it and 
+      use `uv init` to start from scratch (if you are proceeding to the next few 
+      sections, it is best not to delete the existig `pyproject.toml`)
     - You can add dependencies in the [`pyproject.toml`](pyproject.toml) or use the command line:
-      - You can add a core dependency via `poetry add`, e.g. `poetry add pandas` 
-      - You can add dependencies to a group (adding to a group is optional) using `poetry add pytest --group test`
-      - You can install the dependencies from `poetry.lock`, including optional groups, using `poetry install --with=test`
-      - You can update dependencies and create a `poetry.lock` file using `poetry update`
-    - Run scripts with `poetry run`, or jsut spawn a shell in the poetry virtual environment using `poetry shell` and then run your code
-    - **Commit `pyproject.toml` and `poetry.lock` to version control**
+      - You can add a core dependency via `uv add`, e.g. `uv add pandas` 
+      - You can add dependencies to a group (adding to a group is optional) using 
+        `uv add pytest --group test`
+      - You can install the dependencies from `uv.lock`, including optional groups, 
+        using `uv sync --group test`
+      - You can update dependencies and create a `uv.lock` file using `uv lock`
+    - Run scripts with `uv run`
+    - **Commit `uv.lock` to version control**
 
 #### Testing
 
-1. To install testing dependencies, use `poetry install --with=test`
+1. To install testing dependencies, use `uv sync` as this install dev dependencies 
+   by default.
 2. Put your tests in `tests/`
-3. Run your tests by running `pytest` in the project directory
+3. Run your tests by running `pytest` (`uv run pytest`) in the project directory
 4. Test coverage will be in `tests/htmlcov/index.html` 
 
 ### Intermediate
@@ -62,13 +60,12 @@ Poetry is used for dependency management, dependency resolution and can also be 
 
 Because code shouldn't look awful. We will be using `isort` (import sorting), `flake8` (python linter) and `black` (an autoformatter) via [`pre-commit`](https://pre-commit.com/).
 
-`pre-commit` streamlines creating [pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), which are run prior to a commit being accepted by git (locally). This way, your code won't be committed if there are style issues (some of which will be automatically addressed by `black` or `isort`, after which you must stage any further changes).
+`pre-commit` streamlines creating [pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), which are run prior to a commit being accepted by git (locally). This way, your code won't be committed if there are style issues (some of which will be automatically addressed, after which you must stage any further changes).
 
-1. Install the style packages using `poetry install --with=style`
+1. Install the required packages using `uv run pre-commit install`
 2. (Optional) Configure any additional pre-commit hooks in the [YAML](.pre-commit-config.yaml)
-3. Run `pre-commit install` to install the hooks
-4. To run manually, you can run `pre-commit run -a`. Alternatively, these hooks will run as you try and commit changes
-5. (Optional) Install `black` extensions that auto-format on save in your favourite IDE
+3. To run manually, you can run `uvx ruff check --fix` and `uvx ruff format`. 
+   Alternatively, these hooks will run as you try and commit changes
 
 #### Automated testing and publishing to PyPI
 
@@ -76,11 +73,12 @@ Both of these can be achieved via [GitHub Actions](https://github.com/features/a
 
 Note that some testing config is specified in the [`pyproject.toml`](pyproject.toml).
 
-1. The workflow is located [here](.github/workflows/cicd.yml). It is commented to give you an understanding of what it does
+1. The workflow is located [here](.github/workflows/cicd.yml).
     1. Automatically runs linting and autoformatting as above
     2. If that passes, then runs your code tests across Mac and Ubuntu for a couple of Python versions
     3. If a [GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) is created based on a Git tag, it will build the package and upload to PyPI
-        - To get this to work, you will need to add your PyPI username and password as [GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+        - To get this to work, you will need to setup your github repository as 
+          trusted publisher
 2. Uncomment the lines specified. This should allow the workflow to run on a push, pull-request or when manually triggered. Note that publishing to PyPI is only triggered on a release
 3. Activate the workflow. Do this by navigating to the Actions tab, selecting `...` and activating it.
 
@@ -110,7 +108,7 @@ If you make changes to your docs, successfully build it locally (see below) or o
 
 ##### Building locally
 
-First, install the packages required for buildings docs using `poetry install --with=docs`
+First, install the packages required for buildings docs using `uv sync`
 
 You can test whether your documentation builds locally by using the commands offered by the [Makefile](./docs/Makefile). To do this, change directory to `docs` and run `make` to see build options. The easiest option is `make html`.
 
@@ -132,7 +130,6 @@ The source folder in this template repo contains basics for making docs. There i
 
 #### Tool Config
 
-- `flake8` is configured by [.flake8](.flake8)
 - `pytest`, `isort` and `mypy` (not included) can be configured in the [pyproject.toml](pyproject.toml)
 - See relevant sections above for config for `pre-commit`, `read-the-docs` and Sphinx
 
